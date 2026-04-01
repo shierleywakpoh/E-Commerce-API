@@ -1,0 +1,9 @@
+.allitems {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}

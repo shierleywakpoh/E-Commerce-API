@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+.subItem {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 10px;
+}
+h1 {
+  text-align: center;
+}
+.items {
+}

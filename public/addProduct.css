@@ -1,0 +1,12 @@
+body {
+  display: grid;
+  place-items: center;
+}
+.container {
+  border: 1px solid blue;
+  margin-top: 200px;
+  padding: 10px;
+}
+h1 {
+  text-align: center;
+}

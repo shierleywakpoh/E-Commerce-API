@@ -1,0 +1,7 @@
+.image {
+  display: grid;
+  place-items: center;
+}
+h1 {
+  text-align: center;
+}
