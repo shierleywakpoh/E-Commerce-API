@@ -25,13 +25,7 @@ export class TransactionController {
           "CartItems, cusname, cuscontact, cusaddress, and price are required",
       });
     }
-    if (cusname.trim().length === 0) {
-      return res.status(400).json({ message: "Cusname is required" });
-    } else if (cuscontact.trim().length === 0) {
-      return res.status(400).json({ message: "Cuscontact is required" });
-    } else if (cusaddress.trim().length === 0) {
-      return res.status(400).json({ message: "Cusaddress is required" });
-    }
+    
     const id = req.user.id;
 
     try {

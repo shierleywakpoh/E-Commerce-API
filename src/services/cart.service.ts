@@ -54,21 +54,17 @@ export class CartService {
   ): Promise<void> {
     try {
       const dquantity = quantity - quantityId;
-      console.log("quantityId", quantityId);
-      console.log("quantity", quantity);
-      console.log("dquantity", dquantity);
+     
       if (dquantity >= 0) {
         stock = stock - dquantity;
         if (stock < 0) {
           throw new Error("Out of stock");
         }
-        console.log("haloo");
         await this.productRepository.updateStock(stock, productId);
         await this.cartRepository.updateCart(id, quantity);
       } else if (dquantity < 0) {
         const stock1 = stock - dquantity;
         const finalProduct = quantityId + dquantity;
-        console.log("result", quantityId + dquantity);
         if (finalProduct == 0) {
           const totalStock = stock + quantityId;
           await this.productRepository.updateStock(totalStock, productId);
@@ -90,7 +86,6 @@ export class CartService {
   ): Promise<void> {
     try {
       const totalStock = quantity + stock;
-      console.log("totalStock", totalStock);
       await this.productRepository.updateStock(totalStock, productId);
       await this.cartRepository.deleteCart(id);
     } catch (error: any) {

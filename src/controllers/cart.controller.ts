@@ -35,7 +35,7 @@ export class CartController {
 
     try {
       const result = await this.cartService.getById(id);
-      return res.status(201).json(result);
+      return res.status(200).json(result);
     } catch (error: any) {
       if (error.message == "User does not have cart") {
         return res.status(404).json({ message: error.message });
@@ -50,7 +50,9 @@ export class CartController {
     if (!quantity || !productId || !quantityId || !stock) {
       return res
         .status(400)
-        .json({ message: "Quantity, productId, quantityId, stock" });
+        .json({
+          message: "Quantity, productId, quantityId, stock must be added",
+        });
     }
 
     try {
@@ -61,7 +63,7 @@ export class CartController {
         quantityId,
         stock
       );
-      return res.status(201).json({ message: "Changed cart is successfully" });
+      return res.status(200).json({ message: "Changed cart is successfully" });
     } catch (error: any) {
       if (error.message == "Out of stock") {
         return res.status(404).json({ message: error.message });
@@ -77,7 +79,7 @@ export class CartController {
     }
     try {
       await this.cartService.delete(Number(id), quantity, stock, productId);
-      return res.status(201).json({ message: "Deleted cart is sucessfully" });
+      return res.status(200).json({ message: "Deleted cart is sucessfully" });
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }

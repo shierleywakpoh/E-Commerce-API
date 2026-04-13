@@ -11,7 +11,6 @@ async function getCart(token) {
       },
     });
     const data = await response.json();
-    console.log(data)
     return data;
   } catch (error) {
     alert(error);
@@ -55,7 +54,6 @@ async function dataCus(e) {
   const contact = document.getElementById("ccontact").value;
   const address = document.getElementById("caddress").value;
   try {
-    console.log("halo");
     const valueCart = await fetch(`http://localhost:4000/transaction`, {
       method: "POST",
       headers: {
@@ -72,11 +70,9 @@ async function dataCus(e) {
     });
 
     const dataCart = await valueCart.json();
-    console.log("dataCart", dataCart);
     if (dataCart.message == "sucessfully") {
       window.location.href = dataCart.url;
     }
-    console.log(dataCart.message);
     alert(dataCart.message);
   } catch (error) {
     alert(error);

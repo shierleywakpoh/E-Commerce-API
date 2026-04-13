@@ -15,6 +15,15 @@ async function dataTransaction() {
       alert(data.message);
       container.innerHTML = `<p>${data.message}</p>`;
     }
+    if (data.message == "Access token expired") {
+      alert(data.message);
+      container.innerHTML = `<p>${data.message}</p>`;
+    }
+    if (data.message == "Unauthorized") {
+      alert(data.message);
+      container.innerHTML = `<p>${data.message}</p>`;
+    }
+    console.log(data)
     return data;
   } catch (error) {
     alert(error);

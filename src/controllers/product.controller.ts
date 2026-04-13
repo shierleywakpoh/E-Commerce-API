@@ -44,9 +44,9 @@ export class Product {
   async getAll(req: Request, res: Response) {
     try {
       const result = await this.productService.getAll();
-      res.status(201).json(result);
+      res.status(200).json(result);
     } catch (error: any) {
-      console.log("error", error.message);
+      
       res.status(400).json({ message: error.message });
     }
   }
@@ -54,7 +54,7 @@ export class Product {
     try {
       const value = Number(req.params.id as string);
       const result = await this.productService.getById(value);
-      res.status(201).json(result);
+      res.status(200).json(result);
     } catch (error: any) {
       res.status(400).json({ message: error.message });
     }
@@ -75,7 +75,7 @@ export class Product {
         price
       );
 
-      return res.status(201).json({ message: "Changed item is successfully" });
+      return res.status(200).json({ message: "Changed item is successfully" });
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
@@ -87,7 +87,7 @@ export class Product {
       await this.productService.deleteById(id);
 
       return res
-        .status(201)
+        .status(200)
         .json({ message: "Deleted product is successfully" });
     } catch (error: any) {
       return res.status(500).json({ message: error.message });

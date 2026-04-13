@@ -25,13 +25,11 @@ const product = getCart(token);
 
 async function setProduct(value) {
   const products = await value;
-  console.log("a", products);
-
+  
   const container = document.getElementById("product");
   container.innerHTML = "";
 
   products.forEach((number) => {
-    console.log("number", number);
     container.innerHTML += `
     <div class="container">
       <div >
@@ -68,11 +66,9 @@ async function setProduct(value) {
       <input type="submit" value="Change" />
       </form>`;
       id = event.target.dataset.id;
-      console.log("id", id);
 
       container.addEventListener("submit", async function (event) {
         event.preventDefault();
-        console.log("id", id);
         const price = document.getElementById("price").value;
         const stock = document.getElementById("stock").value;
         try {
@@ -85,7 +81,6 @@ async function setProduct(value) {
             body: JSON.stringify({ price: price, stock: stock }),
           });
           const data = await response.json();
-          console.log("output", data);
           if (data.message == "Changed item is successfully") {
             alert(data.message);
             window.location.href = "./adminProduct.html";
@@ -98,7 +93,6 @@ async function setProduct(value) {
     }
     if (event.target.classList.contains("delete-btn")) {
       dataStock = Number(event.target.dataset.stock);
-      console.log("dataStock", dataStock);
       try {
         id = event.target.dataset.id;
         const response = await fetch(`http://localhost:4000/product/${id}`, {
@@ -110,7 +104,6 @@ async function setProduct(value) {
           body: JSON.stringify({ stock: dataStock }),
         });
         const data = await response.json();
-        console.log("output", data);
         if (data.message == "Deleted product is successfully") {
           alert(data.message);
           window.location.href = "./adminProduct.html";
@@ -128,7 +121,6 @@ document.getElementById("searchContainer").addEventListener("submit", search);
 async function search(event) {
   event.preventDefault();
   const searchValue = document.getElementById("search").value;
-  console.log(searchValue);
 
   const result = await fetch(
     `http://localhost:4000/product/search/${searchValue}`,
@@ -139,9 +131,9 @@ async function search(event) {
       },
     }
   );
-  //console.log("result");
+ 
   const data = await result.json();
-  console.log("datasearch", data.result);
+  
   setProduct(data.result);
   return data.result;
 }

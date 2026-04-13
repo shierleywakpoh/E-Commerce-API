@@ -4,7 +4,7 @@ import routes from "./routes/customer.route";
 import Aroutes from "./routes/admin.route";
 import products from "./routes/products.router";
 import cart from "./routes/cart.route";
-import payment from "./routes/payment.route";
+
 import path from "path";
 import transaction from "./routes/transaction.route";
 
@@ -22,7 +22,7 @@ app.use("/customerRegister", routes);
 app.use("/adminRegister", Aroutes);
 app.use("/product", products);
 app.use("/cart", cart);
-app.use("/payment", payment);
+
 app.use("/transaction", transaction);
 
 app.get("/a", (req, res) => {
